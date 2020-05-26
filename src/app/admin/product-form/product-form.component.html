@@ -26,8 +26,6 @@
                     <option value=""></option>
                     <option *ngFor="let c of categories$" [value]="c.key">
                         {{ c.payload.val().name }}
-                        <!--instead can use {{ c.name }} with [value]="c.name" in bind but there
-                            might be some limitations to that -->
                     </option>
                 </select>
                 <div class="alert alert-danger" *ngIf="category.touched && category.invalid">
@@ -47,12 +45,12 @@
         </form>
     </div>
     <div class="col-md-6">
-        <div *ngIf="product.title" class="card" style="width: 18rem;">
-            <img [src]="product.imageUrl" *ngIf="product.imageUrl" class="card-img-top"/>
+        <div *ngIf="product.title" class="card" style="width: 22rem;">
+            <img [src]="product.imageUrl" *ngIf="product.imageUrl" class="card-img-top" alt="{{ product.title }}"/>
             <div class="card-body">
               <h5 class="card-title">{{ product.title }}</h5>
               <p class="card-text">{{ product.price | currency:'USD' }}</p>
             </div>
-          </div>
+        </div>
     </div>
 </div>

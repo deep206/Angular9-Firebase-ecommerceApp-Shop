@@ -22,15 +22,14 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
         const temp: any[] = products;
         this.products = temp; 
         this.initializeTable(this.products);
-        console.log(this.products);
       });
   }
 
   private initializeTable(products: Product[]) {
     this.tableResource = new DataTableResource(products);
-    this.tableResource.query({ offset: 0 }) // Gets all the records for the current page based on the current parameter | offset: 0 means page 1
+    this.tableResource.query({ offset: 0 })
       .then(items => this.items = items);
-    this.tableResource.count() // Total records in out table
+    this.tableResource.count()
       .then(count => this.itemCount = count);
   }
 
@@ -38,7 +37,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
     if (!this.tableResource)
       return;
 
-    this.tableResource.query(params) // Gets all the records for the current page based on the current parameter | offset: 0 means page 1
+    this.tableResource.query(params)
       .then(items => this.items = items);
   }
 

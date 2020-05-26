@@ -21,8 +21,7 @@ export class ProductFormComponent implements OnInit {
     private categoryService: CategoryService,
     private productService: ProductService) {
 
-    this.categoryService.getCategories().subscribe(category => {
-      // console.log(category);
+    this.categoryService.getAll().subscribe(category => {
       this.categories$ = category 
     });
 
@@ -35,8 +34,6 @@ export class ProductFormComponent implements OnInit {
   }
 
   save(product) {
-    // console.log(product);
-    // this.productService.create(product);
     if (this.id) this.productService.update(this.id, product);
     else this.productService.create(product);
 
