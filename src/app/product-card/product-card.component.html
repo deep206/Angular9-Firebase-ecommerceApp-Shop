@@ -1,9 +1,9 @@
 
-<div *ngIf="product.payload.val().title" class="card">
-    <img [src]="product.payload.val().imageUrl" *ngIf="product.payload.val().imageUrl" class="card-img-top" alt="{{ product.title }}">
+<div class="card">
+    <img [src]="product.imageUrl" class="card-img-top">
     <div class="card-body">
-        <h5 class="card-title">{{ product.payload.val().title }}</h5>
-        <p class="card-text">{{ product.payload.val().price | currency:'USD' }}</p>
+        <h5 class="card-title">{{ product.title }}</h5>
+        <p class="card-text">{{ product.price | currency:'USD' }}</p>
     </div>
     <div class="card-footer">
         <a routerLink="" class="btn btn-primary btn-block">Add to Cart</a>

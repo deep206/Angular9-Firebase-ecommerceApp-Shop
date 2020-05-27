@@ -3,12 +3,12 @@
     <a routerLink="/admin/products/new" class="btn btn-primary">New Product</a>
 </p>
 
-<!-- <p>
+<p>
     <input
     #query
     (keyup)="filter(query.value)"
     type="text" class="form-control" placeholder="Search">
-</p> -->
+</p>
 
 <data-table
     [items]="items"
@@ -22,17 +22,18 @@
         [resizable]="true"
     >
         <ng-template #dataTableCell let-item="item">
-            {{ item.payload.val().title }}
+            {{ item.title }}
         </ng-template>
     </data-table-column>
 
     <data-table-column
         [property]="'price'"
         [header]="'Price'"
+        [sortable]="true"
         [resizable]="true"
     >
         <ng-template #dataTableCell let-item="item">
-            {{ item.payload.val().price | currency:'USD' }}
+            {{ item.price | currency:'USD' }}
         </ng-template>
     </data-table-column>
 
