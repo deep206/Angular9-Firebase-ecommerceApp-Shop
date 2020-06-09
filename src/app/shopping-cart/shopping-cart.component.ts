@@ -1,3 +1,6 @@
+import { Product } from './../models/product';
+import { ShoppingCart } from './../models/shopping-cart';
+import { ShoppingCartService } from './../shopping-cart.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  constructor() { }
+  cart: ShoppingCart = new ShoppingCart(null);
+  shoppingCartItemCount: number;
+  shoppingCart: ShoppingCart;
+  
+  constructor(private cartService: ShoppingCartService) { }
 
-  ngOnInit(): void {
+  addToCart(product: Product) {
+    this.cartService.addToCart(product);
+  }
+
+  removeFromCart(product: Product) {
+    this.cartService.removeFromCart(product);
+  }
+
+  getQuantity(product: Product) {
+    if (!this.cart) { return 0; }
+
+    const item = this.cart.itemsMap[product.key];
+    return item ? item.quantity : 0;
+  }
+
+  clearCart() {
+    this.cartService.clearCart();
+  }
+  
+  async ngOnInit() {
+    const cart$ = await this.cartService.getCart();
+    cart$.subscribe( temp => {
+      let data: any;    
+      // data = temp.payload.child('/items').val();
+      this.cart = new ShoppingCart(data);
+      this.shoppingCartItemCount = this.cart.totalItemsCount;
+    });
   }
 
 }
