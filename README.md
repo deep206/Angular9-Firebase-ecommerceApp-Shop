@@ -6,9 +6,6 @@ This is another version of https://github.com/mosh-hamedani/organic-shop which w
 This project uses Firebase as its back end service for storing data, authentication, etc purposes.
 
 Benefits of this project: It uses newer version of NPM packages, Angular CLI and many other packages that had major updates after Mosh published his angular course. Many APIs also changed, for eg: angularfire2, rxjs, etc.
-This project would be good for reference for those who are enrolled in Mosh's Angular course and especially for those who are coding from scratch, the source code in this repository could help them solve various unexpected errors.
-
-P.S. Anyone who is looking to learn front-end/back-end/full-stack development is highly recommended to take any relevant course from Mosh's many courses, that can be found on various platforms like Pluralsight, Udemy, or even his own platform.
 
 Happy Coding!
 
