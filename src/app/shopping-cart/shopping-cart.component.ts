@@ -39,7 +39,7 @@ export class ShoppingCartComponent implements OnInit {
     const cart$ = await this.cartService.getCart();
     cart$.subscribe( temp => {
       let data: any;    
-      // data = temp.payload.child('/items').val();
+      data = temp.payload.child('/items').val();
       this.cart = new ShoppingCart(data);
       this.shoppingCartItemCount = this.cart.totalItemsCount;
     });

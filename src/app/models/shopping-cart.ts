@@ -1,4 +1,5 @@
 import { ShoppingCartItem } from './shopping-cart-item';
+import { Product } from './product';
 
 export class ShoppingCart {
 
@@ -9,17 +10,15 @@ export class ShoppingCart {
         
         for (let productId in itemsMap) {
             let item = itemsMap[productId];
-            let x = new ShoppingCartItem();
-            Object.assign(x, item);
-            x.$key = productId;
-            this.items.push(x);
+            this.items.push(new ShoppingCartItem(item.product, item.quantity));
         }
     }
 
     get totalItemsCount(): number {
         let count = 0;
-        for ( let productId in this.itemsMap)         
+        for ( let productId in this.itemsMap) {          
             count += this.itemsMap[productId].quantity;
+        }
         return count;
     }
 
